@@ -1,4 +1,4 @@
-///@func approach_smooth(start, end, shift,[snap_distance]);
+///@func approach_smooth(start, end, shift,[snap_distance])
 function approach_smooth(_start, _end, _shift, _snap = math_get_epsilon()){
   //We are close enough
   if(abs(_start-_end) < _snap) 

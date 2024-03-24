@@ -1,5 +1,5 @@
-///@func array_find_index(array, value)
-function array_find_index(_array, _val){
+///@func array_find_index_simple(array, value)
+function array_find_index_simple(_array, _val){
 	for (var _i = 0 ; _i < array_length(_array) ; _i++){
 		if _array[_i] == _val
 		{
