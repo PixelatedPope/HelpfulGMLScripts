@@ -1,4 +1,4 @@
-/// @description ceil_n(value, increment)
-/// @param value
-/// @param increment
-return ceil(argument0/argument1)*argument1;
+///@func ceil_n(value, increment)
+function ceil_n(_val, _inc){
+	return ceil(_val / _inc) * _inc;
+}
