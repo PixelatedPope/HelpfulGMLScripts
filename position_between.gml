@@ -1,7 +1,7 @@
-///@func position_between(lower, upper, value)
-function position_between(_val1, _val2, _val3){
+///@func position_between(value, lower, upper)
+function position_between(_val, _low, _up){
   //normalize values
-  _val2 -= _val1
-  _val3 -= _val1
-  return _val3 / _val2;
+  _up -= _low
+  _val -= _low
+  return _val / _up;
 }
