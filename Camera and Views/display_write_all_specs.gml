@@ -29,16 +29,16 @@ function display_write_all_specs(_x = 5, _y = 5, _scale = 1){
   
   _str += $"GUI: {_guiRes} - {_guiAspect} - {_guiScale}X\n";
   
-	for(var _i = 0; _i < 8 && view_enabled; _i++)
-	{ 
-		if(!view_visible[_i]) continue;
-    
+  for(var _i = 0; _i < 8 && view_enabled; _i++){ 
+    if(!view_visible[_i]) continue;
+
     var _viewW = camera_get_view_width(view_camera[_i]), _viewH = camera_get_view_height(view_camera[_i]);
     var _viewRes = $"{_viewW} x {_viewH}"
     var _viewAspect = $"{_viewW / _viewH}"
     var _viewScale = _appW / _viewW  == _appH / _viewH ? $"{_appW / _viewW}" : $"({_appW / _viewW} : {_appH / _viewH})";
-    
+    var _viewPos = $"   @{camera_get_view_x(view_camera[_i])}, {camera_get_view_y(view_camera[_i])}"
     _str += $"View {_i}: {_viewRes} - {_viewAspect} - {_viewScale}X\n";
-	}
-	draw_text_transformed(_x,_y,_str, _scale, _scale, 0);
+    _str += _viewPos +"\n"
+  }
+  draw_text_transformed(_x,_y,_str, _scale, _scale, 0);
 }
