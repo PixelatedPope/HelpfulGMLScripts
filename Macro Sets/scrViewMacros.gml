@@ -2,8 +2,9 @@
 #macro DISP_H display_get_height()
 #macro WIN_W window_get_width()
 #macro WIN_H window_get_height()
-#macro APP_W surface_get_width(application_surface)
-#macro APP_H surface_get_height(application_surface)
+#macro APP_SURF application_surface
+#macro APP_W surface_get_width(APP_SURF)
+#macro APP_H surface_get_height(APP_SURF)
 
 #macro VIEW view_camera[0]
 #macro VIEW_X camera_get_view_x(VIEW)
