@@ -1,5 +1,5 @@
-/// @func display_write_all_specs([x],[y], [scale]);
-function display_write_all_specs(_x = 5, _y = 5, _scale = 1){
+/// @func display_write_all_specs([x],[y], [scale])
+function display_write_all_specs(_x = 5, _y = 5, _scale = display_get_gui_height() / window_get_height()){
   var _dispW = display_get_width(), _dispH = display_get_height(),
       _winW = window_get_width(), _winH = window_get_height(),
       _appW = surface_get_width(application_surface), _appH = surface_get_height(application_surface),
@@ -40,5 +40,8 @@ function display_write_all_specs(_x = 5, _y = 5, _scale = 1){
     _str += $"View {_i}: {_viewRes} - {_viewAspect} - {_viewScale}X\n";
     _str += _viewPos +"\n"
   }
-  draw_text_transformed(_x,_y,_str, _scale, _scale, 0);
+  draw_set_color(c_black);
+  draw_text_transformed((_x + 1) * _scale, (_y + 1)* _scale, _str, _scale, _scale, 0);
+  draw_set_color(c_white);
+  draw_text_transformed(_x * _scale, _y* _scale, _str, _scale, _scale, 0);
 }
