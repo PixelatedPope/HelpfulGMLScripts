@@ -4,9 +4,11 @@
 
 #macro DISP_W display_get_width()
 #macro DISP_H display_get_height()
+
 #macro WIN_W window_get_width()
 #macro WIN_H window_get_height()
 #macro WIN_GET_FULL window_get_fullscreen()
+
 #macro APP_SURF application_surface
 #macro APP_W surface_get_width(APP_SURF)
 #macro APP_H surface_get_height(APP_SURF)
