@@ -8,3 +8,8 @@ function seconds_to_timestamp(_seconds){
   else
     return string(_m) + ":" + string(_s);
 }
+
+///@function steps_to_timestamp(steps)
+function steps_to_timestamp(_steps){
+	return seconds_to_timestamp(_steps div game_get_speed(gamespeed_fps));
+}
