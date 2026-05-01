@@ -1,8 +1,13 @@
 /// @description sprite_is_on_frame(frame)
 /// @param frame
 /// Returns true on the first step the desired frame is displayed.
-/// Jon didn't make it don't let him take credit.
+/// by Gleb Tsereteli
 function sprite_is_on_frame(_frame) {
-	var _ret = (image_index - sprite_get_speed(sprite_index)/(sprite_get_speed_type(sprite_index)==spritespeed_framespergameframe?1:game_get_speed(gamespeed_fps))*image_speed<(_frame)) && floor(image_index+math_get_epsilon()) == _frame;
-	return _ret;
+    var _speed = image_speed / (game_get_speed(gamespeed_fps) / sprite_get_speed(sprite_index));
+    
+    var _positive = (_speed > 0);
+    var _min = _positive ? _frame : _frame + 1 + _speed;
+    var _max = _positive ? _frame + _speed : _frame + 1;
+    
+    return ((image_index >= _min) and (image_index < _max));
 }
