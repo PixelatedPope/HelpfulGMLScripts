@@ -40,6 +40,8 @@ function display_write_all_specs(_x = 5, _y = 5, _scale = display_get_gui_height
     _str += $"View {_i}: {_viewRes} - {_viewAspect} - {_viewScale}X\n";
     _str += _viewPos +"\n"
   }
+  draw_set_halign(fa_left)
+  draw_set_valign(fa_top)
   draw_set_color(c_black);
   draw_text_transformed((_x + 1) * _scale, (_y + 1)* _scale, _str, _scale, _scale, 0);
   draw_set_color(c_white);
