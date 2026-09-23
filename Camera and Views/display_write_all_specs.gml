@@ -1,5 +1,5 @@
-/// @func display_write_all_specs([x],[y], [scale])
-function display_write_all_specs(_x = 5, _y = 5, _scale = display_get_gui_height() / window_get_height()){
+/// @func display_write_all_specs([hori_pos = fa_left], [vert_pos = fa_right], [scale = auto], [bg_alpha = .5])
+function display_write_all_specs(_hori_pos = fa_left, _vert_pos = fa_top, _scale = display_get_gui_height() / window_get_height(), _bg_alpha = .5){
   var _dispW = display_get_width(), _dispH = display_get_height(),
       _winW = window_get_width(), _winH = window_get_height(),
       _appW = surface_get_width(application_surface), _appH = surface_get_height(application_surface),
@@ -40,10 +40,44 @@ function display_write_all_specs(_x = 5, _y = 5, _scale = display_get_gui_height
     _str += $"View {_i}: {_viewRes} - {_viewAspect} - {_viewScale}X\n";
     _str += _viewPos +"\n"
   }
+  
+  var _font = draw_get_font();
+  draw_set_font(-1)
+  var _margin = 10 * _scale;
+  var _width = string_width(_str) * _scale + _margin * 2;
+  var _height = string_height(_str) * _scale + _margin * 2;
+  
+  var _x = 0;
+  switch(_hori_pos){
+	case fa_right:
+		_x = _guiW - _width
+		break;
+	case fa_middle:
+	case fa_center:
+		_x = _guiW / 2 - _width / 2;
+		break;
+  }
+  
+  var _y = 0;
+    switch(_vert_pos){
+	case fa_bottom:
+		_y = _guiH - _height
+		break;
+	case fa_middle:
+	case fa_center:
+		_y = _guiH / 2 - _height / 2;
+		break;
+  }
+  
+  draw_set_color(c_black);
+  draw_set_alpha(_bg_alpha)
+  draw_rectangle(_x, _y, _x + _width, _y + _height, false)
+  draw_set_alpha(1)
+  draw_set_color(c_white);
   draw_set_halign(fa_left)
   draw_set_valign(fa_top)
-  draw_set_color(c_black);
-  draw_text_transformed((_x + 1) * _scale, (_y + 1)* _scale, _str, _scale, _scale, 0);
-  draw_set_color(c_white);
-  draw_text_transformed(_x * _scale, _y* _scale, _str, _scale, _scale, 0);
+  draw_text_transformed(_x + _margin, _y + _margin, _str, _scale, _scale, 0);
+  
+  
+  draw_set_font(_font)
 }
