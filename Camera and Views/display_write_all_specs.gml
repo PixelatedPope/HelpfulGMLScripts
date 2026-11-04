@@ -36,7 +36,8 @@ function display_write_all_specs(_hori_pos = fa_left, _vert_pos = fa_top, _scale
     var _viewRes = $"{_viewW} x {_viewH}"
     var _viewAspect = $"{_viewW / _viewH}"
     var _viewScale = _appW / _viewW  == _appH / _viewH ? $"{_appW / _viewW}" : $"({_appW / _viewW} : {_appH / _viewH})";
-    var _viewPos = $"   @{camera_get_view_x(view_camera[_i])}, {camera_get_view_y(view_camera[_i])}"
+	var _viewTarget =  camera_get_view_target(view_camera[_i]);
+    var _viewPos = $"   @{camera_get_view_x(view_camera[_i])}, {camera_get_view_y(view_camera[_i])} -> {_viewTarget == -4 ? "None" : object_get_name(_viewTarget)}"
     _str += $"View {_i}: {_viewRes} - {_viewAspect} - {_viewScale}X\n";
     _str += _viewPos +"\n"
   }
